@@ -4,7 +4,7 @@ html,body{
 	background-color: transparent;overflow:hidden;
 }
 .logo{ text-align:center;padding:5px 10px;background-color:#000;border-radius:5px;position:absolute;top:14px;right:10px;}
-#demo{
+#ancok-player{
 	height:100%;
 	width:100%;
 	padding:0;
