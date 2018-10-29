@@ -1,41 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8"/>
+<title>Player</title>
+<meta name="robots" content="noindex" />
+<META NAME="GOOGLEBOT" CONTENT="NOINDEX" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="https://cdn.staticaly.com/gh/vid-js/player/master/jw/style.css" type="text/css">
 <script type="text/javascript" src="https://cdn.staticaly.com/gh/jquery/jquery-dist/master/dist/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.staticaly.com/gh/vid-js/player/master/jw/jwplayer.js"></script>
 <script type="text/javascript" src="https://cdn.staticaly.com/gh/vid-js/player/master/jw/jwplayer.html5.js"></script>
 <script type="text/javascript">jwplayer.key = "raLfcPj3U9hxNqlA15yxDEG3+1H3v9UXBBCqOw==";</script>
-<div id="xplayer"></div>
+<style type="text/css">*{margin:0;padding:0}#player{position:absolute;top:0;right:0;bottom:0;left:0;border:none;overflow:hidden;}</style>
+</head>
+<body>
+<div id="player"></div>
 <script type="text/javascript">
-        var primaryCookie = 'html5';
-        var skinURL = "";   
-        var cookies = document.cookie.split(";");
-        for (i=0; i < cookies.length; i++) {
-            var x = cookies[i].substr(0, cookies[i].indexOf("="));
-            var y = cookies[i].substr(cookies[i].indexOf("=") + 1);
-            x = x.replace(/^\s+|\s+$/g,"");
-            if (x == 'primaryCookie') {
-                primaryCookie = y;
-            } else if (x == 'skinURL') { 
-                skinURL = y;
-            }
-        }
-		
-		function switchMode() {
-        primaryCookie == 'html5' ? primaryCookie = 'flash': primaryCookie = 'html5';
-        document.cookie = "primaryCookie=" + primaryCookie;
-        window.location.reload();
-		};
-		function setError() {
-		jwplayer("extensive").load({file:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'}).play();
-		};
-jwplayer("xplayer").setup({
-	width: "100%",
-	aspectratio: "16:9",
-	skin: skinsUrl,
-	playlist: [{image: "", sources: [{ file: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", label:"Auto","type":"video/mp4"}]}],
-	events:{
-		onError: function() {
-		$('#xplayer').html(x)
-		}
-    }
+var videoPlayer = jwplayer("player");
+videoPlayer.setup({
+sources: [{file:"https://lh3.googleusercontent.com/YJ66qyD5nuG8rImF0ZAuPZvqBAhe9UaY637lXNLC9-lXA0xoqbgWJaylLGUp6TOUp6cjf75zsO3Eowl3Gy9OoFgas_A2SlkTy3wkrEkGK9RItWS6KfFyyGxBEqcktI3dF5JYGhfBTg=m37",label:"1080p",type: "video/mp4"},{file:"https://lh3.googleusercontent.com/YJ66qyD5nuG8rImF0ZAuPZvqBAhe9UaY637lXNLC9-lXA0xoqbgWJaylLGUp6TOUp6cjf75zsO3Eowl3Gy9OoFgas_A2SlkTy3wkrEkGK9RItWS6KfFyyGxBEqcktI3dF5JYGhfBTg=m22",label:"720p",type: "video/mp4"},{file:"https://lh3.googleusercontent.com/YJ66qyD5nuG8rImF0ZAuPZvqBAhe9UaY637lXNLC9-lXA0xoqbgWJaylLGUp6TOUp6cjf75zsO3Eowl3Gy9OoFgas_A2SlkTy3wkrEkGK9RItWS6KfFyyGxBEqcktI3dF5JYGhfBTg=m18",label:"360p",type: "video/mp4",default: true}],
+width: "100%",
+height: "100%",
+controls: true,
+displaytitle: false,
+stretching: "exactfit",
+fullscreen: "true",
+primary: "html5",
+autostart: false,
+image:'',
+tracks: [{
+			file: "https://dl.dropboxusercontent.com/s/y77we76hhsks3xd/ancok-demo.srt",
+			label: "Subs",
+			kind:  "captions",
+			default: "true",
+			}],
+			captions: {
+			color: "#FFFF00",
+			fontSize: 14,
+			edgeStyle: "uniform",
+			backgroundOpacity: 0,
+			},
+ logo: {
+			file: "",
+			logoBar: "",
+			position: "top-left",
+			link: ""
+		},
+			aboutlink:"",
+			abouttext:"Ancok Player",
+sharing: {
+		//code: encodeURI("<iframe width=\"640\" height=\"380\" src=\"empty-url\" frameborder=\"0\" scrolling=\"no\"></iframe>"),
+	},
 });
+videoPlayer.addButton(
+                "https://cdn.staticaly.com/gh/ufilestorage/img/master/download.png",
+                "Download Movie", 
+        
+        function(){
+    window.open(videoPlayer.getPlaylistItem()["file"]+"","_blank").blur();
+	window.location.href = jwplayer().getPlaylistItem()['file"];
+	}, "download"
+	);
+
 </script>
+</body>
+</html>
