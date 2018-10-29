@@ -3,39 +3,3 @@
 <script type="text/javascript" src="https://cdn.staticaly.com/gh/vid-js/player/master/jw/jwplayer.js"></script>
 <script type="text/javascript" src="https://cdn.staticaly.com/gh/vid-js/player/master/jw/jwplayer.html5.js"></script>
 <script type="text/javascript">jwplayer.key = "raLfcPj3U9hxNqlA15yxDEG3+1H3v9UXBBCqOw==";</script>
-<div id="xplayer"></div>
-<script type="text/javascript">
-        var primaryCookie = 'html5';
-        var skinURL = "";   
-        var cookies = document.cookie.split(";");
-        for (i=0; i < cookies.length; i++) {
-            var x = cookies[i].substr(0, cookies[i].indexOf("="));
-            var y = cookies[i].substr(cookies[i].indexOf("=") + 1);
-            x = x.replace(/^\s+|\s+$/g,"");
-            if (x == 'primaryCookie') {
-                primaryCookie = y;
-            } else if (x == 'skinURL') { 
-                skinURL = y;
-            }
-        }
-		
-		function switchMode() {
-        primaryCookie == 'html5' ? primaryCookie = 'flash': primaryCookie = 'html5';
-        document.cookie = "primaryCookie=" + primaryCookie;
-        window.location.reload();
-		};
-		function setError() {
-		jwplayer("extensive").load({file:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'}).play();
-		};
-jwplayer("xplayer").setup({
-	width: "100%",
-	aspectratio: "16:9",
-	skin: skinsUrl,
-	playlist: [{image: "", sources: [{ file: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", label:"Auto","type":"video/mp4"}]}],
-	events:{
-		onError: function() {
-		$('#xplayer').html(x)
-		}
-    }
-});
-</script>
